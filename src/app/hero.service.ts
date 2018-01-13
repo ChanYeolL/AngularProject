@@ -7,24 +7,25 @@ import 'rxjs/add/operator/toPromise';
 import {Hero} from './hero';
 
 @Injectable()
-export class HeroService {
+export class HeroService {//JSONP
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'http://10.0.0.26:8080/api/hero';
-
+  private heroesUrl = 'http://127.0.0.1:3000/api/heroes';
 
   constructor(private http: Http) {
 
-    
   }
 
   //能解析（resolve）成模拟英雄列表的承诺（Promise）
   getHeroes(): Promise<Hero[]> {
+    // console.log("xxxxxxxxxxxxx");
     // return Promise.resolve(HEROES);
     //Extracting the data in the then callback
+    //console.info(Hero[0]) ;
     return this.http.get(this.heroesUrl)
       .toPromise()
       .then(response => response.json() as Hero[])
       .catch(this.handleError);
+
   }
 
 
@@ -63,7 +64,7 @@ export class HeroService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
+   // console.error('An error occurred', error);
     //被拒绝 (rejected) 的承诺来把该错误用一个用户友好的格式返回给调用者， 以便调用者能把一个合适的错误信息显示给用户。
     return Promise.reject(error.message || error);
   }

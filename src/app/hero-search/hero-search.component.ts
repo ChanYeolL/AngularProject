@@ -16,6 +16,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import {HeroSearchService} from './hero-search.service';
 import {Hero} from '../hero';
 
+//Component 装饰器来定义组件的元信息
 @Component({
   selector: 'hero-search',
   templateUrl: './hero-search.component.html',

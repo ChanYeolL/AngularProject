@@ -2,33 +2,45 @@ import {RouterModule, Routes} from "@angular/router";
 import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
 import {HeroesComponent} from "./heroes/heroes.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {UserComponent} from "./user/user.component";
+
 import {NgModule} from "@angular/core";
+import {MembersComponent} from "./members/members.component";
 
 const routes: Routes = [
   {
     path: 'heroes',
-      component: HeroesComponent
+    component: HeroesComponent
   },
   {
     path: 'dashboard',
-      component: DashboardComponent
+    component: DashboardComponent
   },
   {
     path: '',
-      redirectTo: '/dashboard',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   {
     path: 'detail/:id',
-      component: HeroDetailComponent
+    component: HeroDetailComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
+  },
+  {
+    path: 'members',
+    component:MembersComponent
   }
 ];
 
 @NgModule(
   {
-    imports:[RouterModule.forRoot(routes)],
-    exports:[RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
   }
 )
 
-export class AppRoutingModule{}
+export class AppRoutingModule {
+}

@@ -9,7 +9,7 @@ import {Hero} from './hero';
 @Injectable()
 export class HeroService {//JSONP
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'http://127.0.0.1:3000/api/heroes';
+  private heroesUrl = 'https://api.github.com/orgs/angular/members?page=1&per_page=5';
 
   constructor(private http: Http) {
 
@@ -17,17 +17,13 @@ export class HeroService {//JSONP
 
   //能解析（resolve）成模拟英雄列表的承诺（Promise）
   getHeroes(): Promise<Hero[]> {
-    // console.log("xxxxxxxxxxxxx");
     // return Promise.resolve(HEROES);
     //Extracting the data in the then callback
-    //console.info(Hero[0]) ;
     return this.http.get(this.heroesUrl)
       .toPromise()
       .then(response => response.json() as Hero[])
       .catch(this.handleError);
-
   }
-
 
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
@@ -45,9 +41,9 @@ export class HeroService {//JSONP
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Hero> {
+  create(login: string): Promise<Hero> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.heroesUrl, JSON.stringify({login: login}), {headers: this.headers})
       .toPromise()
       .then(res => res.json() as Hero)
       .catch(this.handleError);

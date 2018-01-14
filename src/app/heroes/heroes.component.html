@@ -9,14 +9,14 @@
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)"
       [class.selected]="hero === selectedHero">
     <span class="badge">{{hero.id}}</span>
-    <span>{{hero.name}}</span>
+    <span>{{hero.login}}</span>
     <button class="delete"
             (click)="delete(hero); $event.stopPropagation()">x</button>
   </li>
 </ul>
 <div *ngIf="selectedHero">
   <h2>
-    {{selectedHero.name | uppercase}} is my hero
+    {{selectedHero.login | uppercase}} is my hero
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>

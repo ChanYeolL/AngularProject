@@ -8,7 +8,7 @@
     <!--The async pipe subscribes to the Observable and produces the array of heroes to *ngFor.-->
     <div *ngFor="let hero of heroes | async"
          (click)="gotoDetail(hero)" class="search-result" >
-      {{hero.name}}
+      {{hero.login}}
     </div>
   </div>
 </div>

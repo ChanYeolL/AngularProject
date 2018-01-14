@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h2>大家好，我是{{name}}</h2>
+<p>我来自<strong>{{address.province}}</strong> ,
+  <strong>{{address.city}}</strong></p>
+<div *ngIf="showSkills">
+  <h3>我的技能</h3>
+  <ul>
+    <li *ngFor="let skill of skills">
+      {{skill}}
+    </li>
+  </ul>
+  <form (submit)="addSkill(skill.value)">
+    <label>添加技能</label>
+    <input type="text" #skill>
+  </form>
+</div>
+<button (click)="toggleSkills()">
+  {{ showSkills ? "隐藏技能":"显示技能" }}
+</button>
+</body>
+</html>

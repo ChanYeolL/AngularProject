@@ -3,9 +3,9 @@ import {HeroDetailComponent} from "./hero-detail/hero-detail.component";
 import {HeroesComponent} from "./heroes/heroes.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {UserComponent} from "./user/user.component";
+import {MembersComponent} from "./members/members.component";
 
 import {NgModule} from "@angular/core";
-import {MembersComponent} from "./members/members.component";
 
 const routes: Routes = [
   {

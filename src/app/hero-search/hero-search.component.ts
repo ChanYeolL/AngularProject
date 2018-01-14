@@ -21,6 +21,8 @@ import {Hero} from '../hero';
   selector: 'hero-search',
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css'],
+  //providers - 组件所需服务的依赖注入提供商数组。
+  //这是在告诉 Angular：该组件的构造函数需要一个HeroService服务，这样组件就可以从服务中获得英雄数据。
   providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {

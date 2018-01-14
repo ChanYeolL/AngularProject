@@ -1,5 +1,6 @@
 import { Component }          from '@angular/core';
 
+//@Component装饰器，它把紧随其后的类标记成了组件类
 @Component({
   selector: 'my-app',
   template: `

@@ -6,6 +6,14 @@ import {UserComponent} from "./user/user.component";
 import {MembersComponent} from "./members/members.component";
 
 import {NgModule} from "@angular/core";
+import {SizerComponent} from "./sizer/sizer.component";
+import {VersionChildComponent} from "./component-interaction/version-child.component";
+import {VersionParentComponent} from "./component-interaction/version-parent.component";
+import {CountdownViewChildParentComponent} from "./component-interaction/countdown-parent.component";
+import {MissionControlComponent} from "./component-interaction/missioncontrol.component";
+import {TestComponent} from "./test/test.component";
+import {AdBannerComponent} from "./ComponentFactoryResolver/ad-banner.component";
+import {HeroListBasicComponent} from "./animation/hero-list-basic.component";
 
 const routes: Routes = [
   {
@@ -32,7 +40,35 @@ const routes: Routes = [
   {
     path: 'members',
     component:MembersComponent
-  }
+  },
+  {
+    path: 'sizer',
+    component:SizerComponent
+  },
+  {
+    path:'version',
+    component:VersionParentComponent
+  },
+  {
+    path:'interaction',
+    component:CountdownViewChildParentComponent
+  },
+  {
+    path:'mission',
+    component:MissionControlComponent
+  },
+  {
+    path:'test',
+    component:TestComponent
+  },
+  {
+    path:'banner',
+    component:AdBannerComponent
+  },
+  {
+    path:'animation',
+    component:HeroListBasicComponent
+  },
 ];
 
 @NgModule(

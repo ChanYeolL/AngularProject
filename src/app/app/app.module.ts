@@ -1,20 +1,38 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import {NgModule, Testability} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 //JavaScript 的导入语句
-import { AppRoutingModule } from '../app-routing.module';
+import {AppRoutingModule} from '../app-routing.module';
 
-import { AppComponent }         from './app.component';
-import { DashboardComponent }   from '../dashboard/dashboard.component';
-import { HeroesComponent }      from '../heroes/heroes.component';
-import { HeroDetailComponent }  from '../hero-detail/hero-detail.component';
-import { HeroSearchComponent }  from '../hero-search/hero-search.component';
+import {AppComponent} from './app.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {HeroesComponent} from '../heroes/heroes.component';
+import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
+import {HeroSearchComponent} from '../hero-search/hero-search.component';
 import {UserComponent} from "../user/user.component";
 
-import { HeroService }          from '../hero.service';
+import {HeroService} from '../hero.service';
 import {MembersComponent} from "../members/members.component";
 import {MemberService} from "../members/member.service";
+import {SizerComponent} from "../sizer/sizer.component";
+import {VersionChildComponent} from "../component-interaction/version-child.component";
+import {VersionParentComponent} from "../component-interaction/version-parent.component";
+import {CountdownViewChildParentComponent} from "../component-interaction/countdown-parent.component";
+import {CountdownTimerComponent} from "../component-interaction/countdown-timer.component";
+import {MissionControlComponent} from "../component-interaction/missioncontrol.component";
+import {AstronautComponent} from "../component-interaction/astronaut.component";
+import {MissionService} from "../component-interaction/mission.service";
+import {TestComponent} from "../test/test.component";
+import {AdBannerComponent} from "../ComponentFactoryResolver/ad-banner.component";
+import {HeroProfileComponent} from "../ComponentFactoryResolver/hero-profile.component";
+import {HeroJobAdComponent} from "../ComponentFactoryResolver/hero-job-ad.component";
+import {AdAppComponent} from "../ComponentFactoryResolver/ad-app.component";
+import {AdService} from "../ComponentFactoryResolver/ad-service";
+import {AdDirective} from "../ComponentFactoryResolver/ad.directive";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HeroListBasicComponent} from "../animation/hero-list-basic.component";
+import {AnimationHeroService} from "../animation/animation-hero.service";
 
 // Angular 有自己的模块系统
 //Defines the set of injectable objects that are available in the injector of this module.
@@ -30,7 +48,8 @@ import {MemberService} from "../members/member.service";
     FormsModule,
     HttpModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -39,9 +58,25 @@ import {MemberService} from "../members/member.service";
     HeroesComponent,
     HeroSearchComponent,
     UserComponent,
-    MembersComponent
+    MembersComponent,
+    SizerComponent,
+    VersionChildComponent,
+    VersionParentComponent,
+    CountdownViewChildParentComponent,
+    CountdownTimerComponent,
+    MissionControlComponent,
+    AstronautComponent,
+    TestComponent,
+    AdBannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent,
+    AdAppComponent,
+    AdDirective,
+    HeroListBasicComponent
   ],
-  providers: [ HeroService,MemberService ],
-  bootstrap: [ AppComponent ]
+  providers: [HeroService, MemberService,MissionService,AdService,AnimationHeroService],
+  bootstrap: [AppComponent],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
 })
-export class AppModule { }
+export class AppModule {
+}

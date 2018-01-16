@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>自我介绍</title>
 </head>
 <body>
 <h2>大家好，我是{{name}}</h2>
@@ -23,5 +23,9 @@
 <button (click)="toggleSkills()">
   {{ showSkills ? "隐藏技能":"显示技能" }}
 </button>
+<!-- "The sum of 1 + 1 is 2" -->
+<p>The sum of 1 + 1 is {{1 + 1}}</p>
+<!-- "The sum of 1 + 1 is not 4" -->
+<p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}</p>
 </body>
 </html>

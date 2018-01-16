@@ -1,6 +1,6 @@
 <h2>My Heroes</h2>
 <div>
-  <label>Hero name:</label> <input #heroName />
+  <label>Hero name:</label> <input #heroName/>
   <button (click)="add(heroName.value); heroName.value=''">
     Add
   </button>
@@ -8,15 +8,42 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)"
       [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero.id}}</span>
-    <span>{{hero.login}}</span>
-    <button class="delete"
-            (click)="delete(hero); $event.stopPropagation()">x</button>
+    <span class="badge">{{hero?.id}}</span>
+    <span>{{hero?.login}}</span>
+    <button class="delete" (click)="delete(hero); $event.stopPropagation()">
+      x
+    </button>
   </li>
 </ul>
+<input [value]="selectedHero.login"
+       (input)="selectedHero.login=$event.target.value" >
 <div *ngIf="selectedHero">
   <h2>
-    {{selectedHero.login | uppercase}} is my hero
+    {{selectedHero?.login | uppercase}} is my hero
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
+<!--<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">-->
+  <!--<div class="form-group">-->
+    <!--<label for="name">Name-->
+      <!--<input class="form-control" name="name" required [(ngModel)]="hero.name">-->
+    <!--</label>-->
+  <!--</div>-->
+  <!--<button type="submit" [disabled]="!heroForm.form.valid">Submit</button>-->
+<!--</form>-->
+<!--<div [hidden]="!heroForm.form.valid">-->
+  <!--{{submitMessage}}-->
+<!--</div>-->
+<div>
+  Pick your favorite hero
+  (<label><input type="checkbox" checked (change)="showSad = !showSad">show sad</label>)
+</div>
+<select [(ngModel)]="hero">
+  <!--<ng-container>是一个由 Angular 解析器负责识别处理的语法元素,不是一个指令、组件、类或接口，
+  更像是 JavaScript 中 if 块中的花括号。-->
+  <ng-container *ngFor="let h of heroes">
+    <ng-container *ngIf="showSad || h.login !== 'sad'">
+      <option [ngValue]="h">{{h.id}} ({{h.login}})</option>
+    </ng-container>
+  </ng-container>
+</select>

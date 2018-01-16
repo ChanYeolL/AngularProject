@@ -18,6 +18,7 @@ import { Component }          from '@angular/core';
       <a routerLink="/test" routerLinkActive="active">Test</a>
       <a routerLink="/banner" routerLinkActive="active">Banner</a>
       <a routerLink="/animation" routerLinkActive="active">Animation</a>
+      <a routerLink="/form" routerLinkActive="active">Form</a>
     </nav>
     <router-outlet></router-outlet>
   `,

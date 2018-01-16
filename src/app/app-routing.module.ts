@@ -14,6 +14,7 @@ import {MissionControlComponent} from "./component-interaction/missioncontrol.co
 import {TestComponent} from "./test/test.component";
 import {AdBannerComponent} from "./ComponentFactoryResolver/ad-banner.component";
 import {HeroListBasicComponent} from "./animation/hero-list-basic.component";
+import {HeroFormComponent} from "./form/hero-form.component";
 
 const routes: Routes = [
   {
@@ -69,6 +70,10 @@ const routes: Routes = [
     path:'animation',
     component:HeroListBasicComponent
   },
+  {
+    path:'form',
+    component:HeroFormComponent
+  }
 ];
 
 @NgModule(

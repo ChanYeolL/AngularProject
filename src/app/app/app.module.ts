@@ -33,6 +33,7 @@ import {AdDirective} from "../ComponentFactoryResolver/ad.directive";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroListBasicComponent} from "../animation/hero-list-basic.component";
 import {AnimationHeroService} from "../animation/animation-hero.service";
+import {HeroFormComponent} from "../form/hero-form.component";
 
 // Angular 有自己的模块系统
 //Defines the set of injectable objects that are available in the injector of this module.
@@ -72,7 +73,8 @@ import {AnimationHeroService} from "../animation/animation-hero.service";
     HeroProfileComponent,
     AdAppComponent,
     AdDirective,
-    HeroListBasicComponent
+    HeroListBasicComponent,
+    HeroFormComponent
   ],
   providers: [HeroService, MemberService,MissionService,AdService,AnimationHeroService],
   bootstrap: [AppComponent],

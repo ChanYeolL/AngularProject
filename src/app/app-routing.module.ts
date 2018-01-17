@@ -15,6 +15,7 @@ import {TestComponent} from "./test/test.component";
 import {AdBannerComponent} from "./ComponentFactoryResolver/ad-banner.component";
 import {HeroListBasicComponent} from "./animation/hero-list-basic.component";
 import {HeroFormComponent} from "./form/hero-form.component";
+import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path:'form',
     component:HeroFormComponent
+  },
+  {
+    path:'contact',
+    component:ContactComponent
   }
 ];
 

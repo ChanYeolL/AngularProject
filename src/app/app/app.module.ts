@@ -1,6 +1,6 @@
 import {NgModule, Testability} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 //JavaScript 的导入语句
 import {AppRoutingModule} from '../app-routing.module';
@@ -34,6 +34,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroListBasicComponent} from "../animation/hero-list-basic.component";
 import {AnimationHeroService} from "../animation/animation-hero.service";
 import {HeroFormComponent} from "../form/hero-form.component";
+import {HighlightDirective} from "../test/highlight.directive";
+import {ContactComponent} from "../contact/contact.component";
+import {ContactService} from "../contact/contact.service";
+import {UserService} from "../user/user.service";
 
 // Angular 有自己的模块系统
 //Defines the set of injectable objects that are available in the injector of this module.
@@ -44,13 +48,16 @@ import {HeroFormComponent} from "../form/hero-form.component";
 // providers - 服务的创建者，并加入到全局服务列表中，可用于应用任何部分。
 // bootstrap - 指定应用的主视图（称为根组件），它是所有其它视图的宿主。只有根模块才能设置bootstrap属性。
 @NgModule({
+  //BrowserModule注册了一些关键的应用服务提供商。
+  // 它还包括了一些通用的指令，例如NgIf和NgFor，所以这些指令在该模块的任何组件模板中都是可用的。
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -74,9 +81,12 @@ import {HeroFormComponent} from "../form/hero-form.component";
     AdAppComponent,
     AdDirective,
     HeroListBasicComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    HighlightDirective,
+    ContactComponent,
+
   ],
-  providers: [HeroService, MemberService,MissionService,AdService,AnimationHeroService],
+  providers: [HeroService, MemberService,MissionService,AdService,AnimationHeroService,ContactService,UserService],
   bootstrap: [AppComponent],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
 })

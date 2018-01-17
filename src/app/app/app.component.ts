@@ -19,6 +19,7 @@ import { Component }          from '@angular/core';
       <a routerLink="/banner" routerLinkActive="active">Banner</a>
       <a routerLink="/animation" routerLinkActive="active">Animation</a>
       <a routerLink="/form" routerLinkActive="active">Form</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
     </nav>
     <router-outlet></router-outlet>
   `,
@@ -27,4 +28,5 @@ import { Component }          from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+  subtitle = '(v1)';
 }

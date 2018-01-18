@@ -27,11 +27,6 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full'
-  },
-  {
     path: 'detail/:id',
     component: HeroDetailComponent
   },
@@ -78,15 +73,29 @@ const routes: Routes = [
   {
     path:'contact',
     component:ContactComponent
+  },
+  {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path:'*',
+    component:DashboardComponent
   }
 ];
 
 @NgModule(
   {
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(
+      routes,
+      { enableTracing: true }
+      )],
     exports: [RouterModule]
   }
 )
 
+//这个AppRoutingModule仅用于应用的根模块
+//永远不要在特性路由模块中调用RouterModule.forRoot！
 export class AppRoutingModule {
 }

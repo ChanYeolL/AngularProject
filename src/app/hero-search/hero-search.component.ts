@@ -14,7 +14,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import {HeroSearchService} from './hero-search.service';
-import {Hero} from '../hero';
+import {Hero} from '../heroes/hero';
 
 //Component 装饰器来定义组件的元信息
 @Component({

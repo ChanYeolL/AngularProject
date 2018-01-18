@@ -12,7 +12,7 @@ import {HeroDetailComponent} from '../hero-detail/hero-detail.component';
 import {HeroSearchComponent} from '../hero-search/hero-search.component';
 import {UserComponent} from "../user/user.component";
 
-import {HeroService} from '../hero.service';
+import {HeroService} from '../heroes/hero.service';
 import {MembersComponent} from "../members/members.component";
 import {MemberService} from "../members/member.service";
 import {SizerComponent} from "../sizer/sizer.component";
@@ -34,10 +34,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeroListBasicComponent} from "../animation/hero-list-basic.component";
 import {AnimationHeroService} from "../animation/animation-hero.service";
 import {HeroFormComponent} from "../form/hero-form.component";
-import {HighlightDirective} from "../test/highlight.directive";
-import {ContactComponent} from "../contact/contact.component";
-import {ContactService} from "../contact/contact.service";
 import {UserService} from "../user/user.service";
+import {ContactModule} from "../contact/contact.module";
+import {Logger} from "../logger.service";
+import {AdModule} from "../ComponentFactoryResolver/ad-module";
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
+import {NoopInterceptor} from "../httpClient/noop.interceptor";
 
 // Angular 有自己的模块系统
 //Defines the set of injectable objects that are available in the injector of this module.
@@ -57,7 +59,15 @@ import {UserService} from "../user/user.service";
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    // HttpClientXsrfModule.withConfig({
+    //   cookieName: 'My-Xsrf-Cookie',
+    //   headerName: 'My-Xsrf-Header',
+    // }),
+
+    ContactModule,
+    AdModule,
   ],
   declarations: [
     AppComponent,
@@ -75,18 +85,22 @@ import {UserService} from "../user/user.service";
     MissionControlComponent,
     AstronautComponent,
     TestComponent,
-    AdBannerComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
-    AdAppComponent,
-    AdDirective,
     HeroListBasicComponent,
     HeroFormComponent,
-    HighlightDirective,
-    ContactComponent,
-
   ],
-  providers: [HeroService, MemberService,MissionService,AdService,AnimationHeroService,ContactService,UserService],
+  //服务类能充当自己的提供商，这就是为什么只要把它们列在providers数组里就算注册成功了。
+  //新建和缓存这个服务是依赖注入器的工作
+  providers: [HeroService, MemberService,MissionService,AnimationHeroService,UserService,Logger,
+    // {provide:HeroService , useClass:HeroService},
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:NoopInterceptor,
+      //multi:会告诉 Angular 这个 HTTP_INTERCEPTORS 表示的是一个数组，而不是单个的值。
+      multi:true,
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
 })

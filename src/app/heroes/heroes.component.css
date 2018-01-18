@@ -1,3 +1,7 @@
+*{
+  box-sizing: inherit !important;
+  -webkit-box-sizing:inherit !important;
+}
 .selected {
   background-color: #CFD8DC !important;
   color: white;
@@ -7,6 +11,7 @@
   list-style-type: none;
   padding: 0;
   width: 15em;
+
 }
 .heroes li {
   cursor: pointer;
@@ -44,6 +49,10 @@
   height: 1.8em;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+}
+.heroes .heroName{
+  -webkit-box-sizing:inherit;
+  box-sizing: inherit;
 }
 button {
   font-family: Arial;

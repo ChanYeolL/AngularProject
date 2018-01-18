@@ -7,7 +7,7 @@ import {forbiddenNameValidator} from "./forbidden-name.directive";
 @Component({
   selector: 'app-hero-form',
   templateUrl: './hero-form.component.html',
-  styleUrls:['./hero-form.css'],
+  styleUrls:['./hero-form.component.css'],
 })
 export class HeroFormComponent implements OnInit{
   powers = ['Really Smart', 'Super Flexible',

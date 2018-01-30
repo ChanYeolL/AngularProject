@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 import { Router }            from '@angular/router';
 
 import { Hero }                from './hero';
 import { HeroService }         from './hero.service';
+import {slideInDownAnimation} from "../animations";
 
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: [ './heroes.component.css' ]
+  styleUrls: [ './heroes.component.css' ],
+  animations: [ slideInDownAnimation ]
 })
 export class HeroesComponent implements OnInit {
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display')   display = 'block';
+  @HostBinding('style.position')  position = 'absolute';
   heroes: Hero[];
   selectedHero: Hero;
 

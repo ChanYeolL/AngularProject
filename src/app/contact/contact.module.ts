@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {ContactService} from "./contact.service";
 
 import {HighlightDirective} from "./highlight.directive";
+import {GreetDirective} from "./greet.directive";
 // import {HighlightDirective} from "../highlight.directive";
 
 @NgModule({
@@ -15,7 +16,7 @@ import {HighlightDirective} from "./highlight.directive";
   declarations:[
     ContactComponent,
     HighlightDirective,
-    // HighlightDirective
+    GreetDirective,
   ],
   providers:[
     ContactService,

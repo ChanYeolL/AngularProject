@@ -5,7 +5,6 @@ import { Component }          from '@angular/core';
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
@@ -19,9 +18,11 @@ import { Component }          from '@angular/core';
       <a routerLink="/banner" routerLinkActive="active">Banner</a>
       <a routerLink="/animation" routerLinkActive="active">Animation</a>
       <a routerLink="/form" routerLinkActive="active">Form</a>
-      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact2</a>
+      <a [routerLink]="[{ outlets: { popup : ['compose']} }]">Contact</a>
     </nav>
     <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
   `,
   //通过为文件名加上./前缀来使用相对URL
   styleUrls: ['./app.component.css']

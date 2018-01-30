@@ -1,4 +1,4 @@
-import { Component, OnInit }      from '@angular/core';
+import {AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 
 import { Contact, ContactService } from './contact.service';
 import {UserService} from "../user/user.service";
@@ -8,16 +8,23 @@ import {UserService} from "../user/user.service";
   templateUrl: './contact.component.html',
   styleUrls: [ './contact.component.css' ]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit,AfterViewInit {
   contact:  Contact;
   contacts: Contact[];
+
+  context = { message: 'Hello ngOutletContext!',
+    $implicit: 'Hello, Semlinker!' };
+
+  @ViewChild('tpl') tplRef: TemplateRef<any>;
 
   msg = 'Loading contacts ...';
   userName = '';
 
-  constructor(private contactService: ContactService, userService: UserService) {
+  constructor(private contactService: ContactService, userService: UserService,private vcRef: ViewContainerRef) {
     this.userName = userService.userName;
   }
+
+
 
   ngOnInit() {
     this.contactService.getContacts().then(contacts => {
@@ -25,6 +32,11 @@ export class ContactComponent implements OnInit {
       this.contacts = contacts;
       this.contact = contacts[0];
     });
+  }
+
+  ngAfterViewInit() {
+    this.vcRef.createEmbeddedView(this.tplRef);
+    console.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") ;
   }
 
   next() {

@@ -19,7 +19,14 @@ export class HeroFormComponent implements OnInit{
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  versions = ['1.x', '2.x', '3.x'];
+
+  username = 'semlinker';
+
+  onSubmit(value) {
+    this.submitted = true;
+  console.dir(value);
+  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }

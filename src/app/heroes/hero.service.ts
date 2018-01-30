@@ -27,6 +27,7 @@ export class HeroService {//JSONP
 
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
+    console.info(url) ;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Hero)

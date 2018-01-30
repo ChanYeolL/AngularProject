@@ -74,3 +74,61 @@
   <br>
   <button class="btn btn-primary" (click)="submitted=false">Edit</button>
 </div>
+<br>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+  <fieldset ngModelGroup="user">
+    <input
+      type="text"
+      required
+      minlength="3"
+      name="username"
+      [(ngModel)]="username"
+      #userName="ngModel">
+    <hr>
+    <p>Name控件的valid状态：{{userName.valid}} - 表示控件有效</p>
+    <p>Name控件的invalid状态：{{userName.invalid}} - 表示控件无效</p>
+    <p>Name控件的pristine状态：{{userName.pristine}} - 表示控件值未改变</p>
+    <p>Name控件的dirty状态：{{userName.dirty}} - 表示控件值已改变</p>
+    <p>Name控件的touched状态：{{userName.touched}} - 表示控件已被访问过</p>
+    <p>Name控件的untouched状态：{{userName.untouched}} - 表示控件未被访问过</p>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+      {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" ngModel name="password">
+  </fieldset>
+  <button type="submit">提交</button>
+  <hr>
+  {{loginForm.value | json}}
+</form>
+
+<form #loginForm2="ngForm">
+  Angular版本：
+  <div *ngFor="let version of versions;">
+    <input
+      [attr.id]="version"
+      name="version"
+      ngModel
+      required
+      [value]="version"
+      type="radio">
+    <label [attr.for]="version">{{version}}</label>
+  </div>
+  <hr>
+  {{loginForm2.value | json}}
+</form>
+
+<form #loginForm3="ngForm">
+  Angular版本：
+  <select name="version" [ngModel]="version" required>
+    <option
+      *ngFor="let version of versions;"
+      [value]="version">
+      {{version}}
+    </option>
+  </select>
+  <label></label>
+  <hr>
+  {{loginForm3.value | json}}
+</form>

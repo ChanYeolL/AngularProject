@@ -35,11 +35,21 @@ import {HeroListBasicComponent} from "../animation/hero-list-basic.component";
 import {AnimationHeroService} from "../animation/animation-hero.service";
 import {HeroFormComponent} from "../form/hero-form.component";
 import {UserService} from "../user/user.service";
-import {ContactModule} from "../contact/contact.module";
+// import {ContactModule} from "../contact/contact.module";
 import {Logger} from "../logger.service";
 import {AdModule} from "../ComponentFactoryResolver/ad-module";
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
 import {NoopInterceptor} from "../httpClient/noop.interceptor";
+import {PageNotFoundComponen} from "../page-not-found.componen";
+import {HeroesModule} from "../heroes/heroes.module";
+import {ComposeMessageComponent} from "../compose-message.component";
+import {NgxEchartsModule} from "../ngx-excharts/ngx-echarts.module";
+import {ContactModule} from "../contact/contact.module";
+
+//    ./或无前导斜线形式是相对于当前级别的。
+
+//    ../会回到当前路由路径的上一级。
+
 
 // Angular 有自己的模块系统
 //Defines the set of injectable objects that are available in the injector of this module.
@@ -57,10 +67,11 @@ import {NoopInterceptor} from "../httpClient/noop.interceptor";
     FormsModule,
     HttpModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule,
+
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     // HttpClientXsrfModule.withConfig({
     //   cookieName: 'My-Xsrf-Cookie',
     //   headerName: 'My-Xsrf-Header',
@@ -68,12 +79,13 @@ import {NoopInterceptor} from "../httpClient/noop.interceptor";
 
     ContactModule,
     AdModule,
+    HeroesModule,
+    NgxEchartsModule,
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent,
     HeroSearchComponent,
     UserComponent,
     MembersComponent,
@@ -89,6 +101,8 @@ import {NoopInterceptor} from "../httpClient/noop.interceptor";
     HeroProfileComponent,
     HeroListBasicComponent,
     HeroFormComponent,
+    PageNotFoundComponen,
+    ComposeMessageComponent
   ],
   //服务类能充当自己的提供商，这就是为什么只要把它们列在providers数组里就算注册成功了。
   //新建和缓存这个服务是依赖注入器的工作
